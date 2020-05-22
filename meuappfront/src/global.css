@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font: 400 14px Noto Sans JP, sans-serif;
+    background: #f0f0f5;
+    -webkit-font-smoothing: antialiased;
+}
+
+input, button, textarea{
+    font: 400 18px Noto Sans JP, sans-serif;
+}
+
+button{
+    cursor: pointer;
+}
+
+form input {
+    width: 100%;
+    height: 60px;
+    color: rgb(114, 113, 113);
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 0 15px;
+}
+
+.button{
+    width: 100%;
+    height: 60px;
+    background: #ff66a3;
+    border-radius: 50px;
+    color: #FFF;
+    margin-top: 15px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: filter 0.2s;
+}
+
+.button:hover{
+    filter: brightness(50%);
+}
