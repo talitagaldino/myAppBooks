@@ -2,6 +2,7 @@ import React from 'react';
 import './styles.css';
 import logo from '../../images/logo.png';
 import { FiLogIn } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 export default function Login(){
     return(
@@ -16,7 +17,7 @@ export default function Login(){
 
                     <button className="button" type="submit">Entrar</button>
                     <FiLogIn size={16} color="#ff66a3" />
-                    <a href="/register">Cadastre-se</a>
+                    <Link className="links" to="/register">Cadastre-se</Link>
                 </form>
             </section>
         </div>
