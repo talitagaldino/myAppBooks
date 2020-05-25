@@ -3,7 +3,7 @@ img{
     border-radius: 1000px;
 }
 
-.register-container{
+.new-book-container{
     width: 100%;
     max-width: 1120px;
     height: 100vh;
@@ -14,7 +14,7 @@ img{
     justify-content: center;
 }
 
-.register-container .content{
+.new-book-container .content{
     width: 100%;
     padding: 40px;
     background: #f0f0f5;
@@ -26,38 +26,29 @@ img{
     align-items: center;
 }
 
-.register-container .content section{
+.new-book-container .content section{
     width: 100%;
     max-width: 250px;
     margin-left: 80px;
 }
 
-.register-container .content section h1{
+.new-book-container .content section h1{
     margin: 20px 0 20px;
     font-size: 30px;
 }
 
-.register-container .content section p{
+.new-book-container .content section p{
     font-size: 15px;
     color: #737380;
     line-height: 30px;
 }
 
-.register-container .content form{
+.new-book-container .content form{
     width: 100%;
     max-width: 450px;
     margin-right: 100px;
 }
 
-.register-container .content form input{
+.new-book-container .content form input{
     margin-top: 8px;
-}
-
-.register-container .content form .input-group{
-    display: flex;
-
-}
-
-.register-container .content form .input-group input + input{
-    margin-left: 8px;
 }
