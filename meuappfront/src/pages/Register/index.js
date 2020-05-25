@@ -10,6 +10,7 @@ export default function Register(){
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
     const [telephone, setTelephone] = useState('');
@@ -22,6 +23,7 @@ export default function Register(){
         const data = {
             name,
             email,
+            password,
             city,
             uf,
             telephone,
@@ -30,7 +32,7 @@ export default function Register(){
         try{
             const response = await api.post('users', data);
 
-            alert(`Seu ID de acesso: ${response.data.id}`);
+            alert(`Olá ${response.data.name}!`);
             history.push('/');
             
         } catch (err){
@@ -55,32 +57,41 @@ export default function Register(){
 
                 <form onSubmit={handleRegister}>
                     <input 
-                    placeholder="Nome"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
+                        placeholder="Nome"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
                     />
                     <input 
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)} />
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)} 
+                    />
+
+                    <input 
+                        type="password"
+                        placeholder="Senha"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)} 
+                    />
+
                     <input
-                    placeholder="Telefone"
-                    value={telephone}
-                    onChange={e => setTelephone(e.target.value)}
+                        placeholder="Telefone"
+                        value={telephone}
+                        onChange={e => setTelephone(e.target.value)}
                     />
 
                     <div className="input-group">
                         <input
-                        placeholder="Cidade" 
-                        value={city}
-                        onChange={e => setCity(e.target.value)}
+                            placeholder="Cidade" 
+                            value={city}
+                            onChange={e => setCity(e.target.value)}
                         />
                         <input 
-                        placeholder="UF" 
-                        style={{ width: 80 }}
-                        value={uf}
-                        onChange={e => setUf(e.target.value)}
+                            placeholder="UF" 
+                            style={{ width: 80 }}
+                            value={uf}
+                            onChange={e => setUf(e.target.value)}
                         />
                     </div>
                     

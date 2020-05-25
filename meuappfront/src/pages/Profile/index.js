@@ -72,6 +72,9 @@ export default function Profile(){
                         <strong>Autor: </strong>
                         <p>{books.author}</p>
 
+                        <strong>Descrição: </strong>
+                        <p>{books.description}</p>
+
                         <button onClick={() => handleDeleteBook(books.id)} type="button">
                             <FiTrash2 size={20} color="#a8a8b3" />
                         </button>

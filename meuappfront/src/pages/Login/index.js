@@ -8,18 +8,19 @@ import api from '../../services/api';
 
 
 export default function Login(){
-    const [id, setId] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     const history = useHistory();
 
     async function handleLogin(e){
         e.preventDefault();
         
         try{
-            const response = await api.post('sessions', {id});
+            const response = await api.post('sessions', {email, password});
             
             //salvando na aplicação
-            localStorage.setItem('userId', id);
-            localStorage.setItem('userName', response.data.name);
+            localStorage.setItem('userEmail', response.data.email);
 
             history.push('/profile');
         } catch(err){
@@ -36,9 +37,16 @@ export default function Login(){
                     <h1>Login</h1>
 
                     <input
-                    placeholder="ID" 
-                    value={id}
-                    onChange={e => setId(e.target.value)}
+                        placeholder="Email" 
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
+
+                    <input
+                        placeholder="Senha"
+                        type="password" 
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                     />
 
                     <button className="button" type="submit">Entrar</button>
