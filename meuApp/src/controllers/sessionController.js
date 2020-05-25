@@ -4,15 +4,18 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create(req, res){
-        const { id } = req.body;
+        const { email, password } = req.body;
+        
 
         const user = await connection('users')
-        .where('id', id)
-        .select('name')
+        .where({
+            email: email,
+            password: password
+        }).select('email')
         .first();
 
         if(!user){
-            return res.status(400).json({ error: 'No user found with this Id'});
+            return res.status(400).json({ error: 'Error'});
         }
 
         return res.json(user);

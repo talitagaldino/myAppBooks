@@ -4,7 +4,7 @@ const crypto = require('crypto');
 
 module.exports = {
     async create(req, res){
-        const { name, email, city, uf, telephone } = req.body;
+        const { name, email, city, uf, telephone, password } = req.body;
 
         //para criação do id
         const id = crypto.randomBytes(4).toString('HEX');
@@ -12,6 +12,7 @@ module.exports = {
         await connection('users').insert({
             id,
             name,
+            password,
             email,
             city,
             uf,

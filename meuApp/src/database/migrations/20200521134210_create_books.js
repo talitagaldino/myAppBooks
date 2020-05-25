@@ -5,6 +5,7 @@ exports.up = function(knex) {
 
         table.string('title').notNullable();
         table.string('author').notNullable();
+        table.string('description').notNullable();
         
         table.string('user_id').notNullable();
 

@@ -2,12 +2,13 @@ const connection = require('../database/connection');
 
 module.exports = {
     async create(req, res){
-        const { title, author } = req.body;
+        const { title, author, description } = req.body;
         const user_id = req.headers.authorization;
 
         const [id] = await connection('books').insert({
             title,
             author,
+            description,
             user_id,
         });
 
