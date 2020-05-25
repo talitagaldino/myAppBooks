@@ -1,11 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../../images/logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
+import api from '../../services/api'
 
 export default function NewBook(){
+
+    const [title, setTitle] = useState('');
+    const [author, setAuthor] = useState('');
+
+    const userId = localStorage.getItem('userId');
+
+    const history = useHistory();
+
+    async function handleNewBook(e){
+        e.preventDefault();
+
+        const data = {
+            title,
+            author,
+        };
+
+        try{
+            await api.post('books', data, {
+                headers:{
+                    Authorization: userId, 
+                }
+            })
+
+            history.push('/profile');
+
+        } catch(err){
+            alert('Erro ao realizar cadastro de livro');
+        }
+
+    }
+
     return(
         <div className="new-book-container">
             <div className="content">
@@ -21,10 +53,18 @@ export default function NewBook(){
                     </Link>
                 </section>
 
-                <form>
-                    <input placeholder="Título do livro" />
+                <form onSubmit={handleNewBook}>
+                    <input 
+                    placeholder="Título do livro"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    />
                     
-                    <input placeholder="Autor" />
+                    <input 
+                    placeholder="Autor"
+                    value={author}
+                    onChange={e => setAuthor(e.target.value)}
+                    />
 
 
                     

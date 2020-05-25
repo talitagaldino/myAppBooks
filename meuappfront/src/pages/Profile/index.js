@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './styles.css';
 
 import logo from '../../images/logo.png';
@@ -9,6 +9,8 @@ import api from '../../services/api';
 
 export default function Profile(){
     const [books, setBooks] = useState([]);
+    
+    const history = useHistory();
 
     const userName = localStorage.getItem('userName');
     const userId = localStorage.getItem('userId');
@@ -23,6 +25,28 @@ export default function Profile(){
         })
     }, [userId]);
 
+    async function handleDeleteBook(id){
+        console.log('entrou');
+        try{
+            await api.delete(`books/${id}`, {
+                headers: {
+                    Authorization: userId,
+                }
+            });
+            
+            setBooks(books.filter(books => books.id !== id));
+
+        } catch(err){
+            alert('Erro ao deletar livro');
+        }
+    }
+
+    function handleLogout(){
+        localStorage.clear();
+
+        history.push('/');
+    }
+
     return (
         <div className="profile-container">
             <header>
@@ -32,7 +56,7 @@ export default function Profile(){
                 <Link className="button" to="/books/new">
                     Cadastrar livro
                 </Link>
-                <button type="button">
+                <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#ff66a3"/>
                 </button>
             </header>
@@ -48,7 +72,7 @@ export default function Profile(){
                         <strong>Autor: </strong>
                         <p>{books.author}</p>
 
-                        <button type="button">
+                        <button onClick={() => handleDeleteBook(books.id)} type="button">
                             <FiTrash2 size={20} color="#a8a8b3" />
                         </button>
                     </li>
