@@ -15,17 +15,19 @@ export default function Login(){
 
     async function handleLogin(e){
         e.preventDefault();
-        
-        try{
-            const response = await api.post('sessions', {email, password});
-            
-            //salvando na aplicação
-            localStorage.setItem('token', response.data.token);
 
-            history.push('/profile');
-        } catch(err){
-            alert('Falha no login');
-        }
+        const data = {
+            email,
+            password
+        };
+
+        await api.post('sessions', data);
+
+        //salvando na aplicação
+        localStorage.setItem('userEmail', data.email);
+
+        history.push('/profile');
+
     }
 
     return(

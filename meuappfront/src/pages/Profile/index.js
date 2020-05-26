@@ -12,7 +12,7 @@ export default function Profile(){
     
     const history = useHistory();
 
-    const userName = localStorage.getItem('userName');
+    const userEmail = localStorage.getItem('userEmail');
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
@@ -51,7 +51,7 @@ export default function Profile(){
         <div className="profile-container">
             <header>
                 <img src={logo} alt="Meus Livros" />
-                <span> Olá, bem vindo {userName}!</span>
+                <span> Olá, bem vindo!</span>
 
                 <Link className="button" to="/books/new">
                     Cadastrar livro

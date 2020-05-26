@@ -8,7 +8,6 @@ const authConfig = require('../config/auth.json');
 module.exports = {
     async create(req, res){
         const { email, password } = req.body;
-        const { id } = req.headers.authorization;
         
         const user = await connection('users')
         .where({
@@ -21,10 +20,6 @@ module.exports = {
             return res.status(400).json({ error: 'User not found'});
         }
 
-        const token = jwt.sign({ id }, authConfig.secret, {
-            expiresIn:86400,
-        })
-
-        return res.json({ user, token });
+        return res.json({ user });
     }
 }
