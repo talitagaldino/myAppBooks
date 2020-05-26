@@ -20,6 +20,10 @@ module.exports = {
             return res.status(400).json({ error: 'User not found'});
         }
 
-        return res.json({ user });
+        const token = jwt.sign({ id: user.id }, authConfig.secret, {
+            expiresIn: 86400,
+        })
+
+        return res.json({ user, token });
     }
 }

@@ -6,6 +6,9 @@ const bookController = require('./controllers/bookController');
 const profileController = require('./controllers/profileController');
 const sessionController = require('./controllers/sessionController');
 
+const authMiddleware = require('../src/middlewares/auth');
+
+
 const routes = new Router();
 
 //rotas de login
@@ -56,7 +59,7 @@ routes.delete('/books/:id', celebrate({
 }), bookController.delete); //deleta um livro da tabela
 
 //rotas dos perfis
-routes.get('/profile', celebrate({
+routes.get('/profile', authMiddleware, celebrate({
     [Segments.HEADERS]: Joi.object({
         authorization: Joi.string().required(),
     }).unknown(),
