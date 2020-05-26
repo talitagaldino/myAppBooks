@@ -29,6 +29,7 @@ routes.post('/users', celebrate({
 }), userController.create); //cria um usuario
 
 routes.get('/users', userController.index); //mostra todos os usuarios
+routes.delete('/users/:id', userController.delete);
 
 //rotas dos livros
 routes.post('/books', celebrate({

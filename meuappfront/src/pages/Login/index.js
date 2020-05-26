@@ -20,7 +20,7 @@ export default function Login(){
             const response = await api.post('sessions', {email, password});
             
             //salvando na aplicação
-            localStorage.setItem('userEmail', response.data.email);
+            localStorage.setItem('token', response.data.token);
 
             history.push('/profile');
         } catch(err){

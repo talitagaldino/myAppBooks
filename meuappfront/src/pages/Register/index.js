@@ -32,7 +32,7 @@ export default function Register(){
         try{
             const response = await api.post('users', data);
 
-            alert(`Olá ${response.data.name}!`);
+            alert('Cadastro feito com sucesso');
             history.push('/');
             
         } catch (err){
